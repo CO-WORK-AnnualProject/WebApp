@@ -11,6 +11,8 @@ import { FormInformationsComponent } from './form-informations/form-informations
 import { FormAboInformationsComponent } from './form-abo-informations/form-abo-informations.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { CustomerSpaceComponent } from './customer-space/customer-space.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { CustomerSpaceComponent } from './customer-space/customer-space.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
