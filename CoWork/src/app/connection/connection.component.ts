@@ -1,42 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../service/login.service';
-import { ConnectInfo } from '../lib/login';
-import { NgForm } from '@angular/forms';
-
-
+import {Component, OnInit} from '@angular/core';
+import {ConnectInfo} from '../_models/login';
+import {NgForm} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthentificationService} from '../_services/authentification.service';
+import {first} from 'rxjs/operators';
+import {AlertService} from '../_services/alert.service';
 
 @Component({
   selector: 'app-connection',
   templateUrl: './connection.component.html',
   styleUrls: ['./connection.component.css']
 })
+
 export class ConnectionComponent implements OnInit {
   loading = false;
+  returnUrl: string;
 
-  constructor(public login: LoginService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthentificationService,
+    private alertService: AlertService) {}
 
   ngOnInit() {
+    // reset login status
+    this.authenticationService.logout();
+
+    // get return url from route parameters or default to '/'
+    this.returnUrl = 'administration';
   }
 
-  onFormSubmit(userForm: NgForm) {
+  onFormSubmit(loginForm: NgForm) {
     const profilConnect: ConnectInfo = {
-      email: userForm.value.inputEmail,
-      password: userForm.value.inputPassword
+      email: loginForm.value.inputEmail,
+      password: loginForm.value.inputPassword
     };
 
-    this.login.login(profilConnect);
-
-    console.log('=====>' + userForm.valid);
-    console.log('=====>' + this.login.profil._id);
-    if (this.login.profil.isLogged) {
-      console.log('=====> ok il est cooo');
-    } else {
-      console.log('=====> Eh bah merde pas trouvé');
+    // stop here if form is invalid
+    if (loginForm.invalid) {
+      return;
     }
-  }
 
-  onFormReset(userForm: NgForm) {
-    userForm.resetForm();
+    this.loading = true;
+    this.authenticationService.login(profilConnect)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        });
   }
 
 }

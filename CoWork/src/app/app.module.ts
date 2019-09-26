@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConnectionComponent } from './connection/connection.component';
@@ -13,6 +12,11 @@ import { AdministrationComponent } from './administration/administration.compone
 import { CustomerSpaceComponent } from './customer-space/customer-space.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {AlertService} from './_services/alert.service';
+import {LoginService} from './_services/login.service';
+import {AuthentificationService} from './_services/authentification.service';
+import { AlertComponent } from './alert/alert.component';
+import {AuthentificationGuard} from './_guards/authentification.guard';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     FormInformationsComponent,
     FormAboInformationsComponent,
     AdministrationComponent,
-    CustomerSpaceComponent
+    CustomerSpaceComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,12 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    AlertService,
+    AuthentificationService,
+    LoginService,
+    AuthentificationGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
