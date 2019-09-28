@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Profil } from '../lib/login';
+import { Profil } from '../_models/login';
 
 const httpOptions = {
   headers: new HttpHeaders({
