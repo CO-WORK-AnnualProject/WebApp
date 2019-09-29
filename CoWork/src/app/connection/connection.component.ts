@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthentificationService} from '../_services/authentification.service';
 import {first} from 'rxjs/operators';
 import {AlertService} from '../_services/alert.service';
+import {isLowerCase} from "tslint/lib/utils";
 
 @Component({
   selector: 'app-connection',
@@ -32,7 +33,7 @@ export class ConnectionComponent implements OnInit {
 
   onFormSubmit(loginForm: NgForm) {
     const profilConnect: ConnectInfo = {
-      email: loginForm.value.inputEmail,
+      email: loginForm.value.inputEmail.toLowerCase(),
       password: loginForm.value.inputPassword
     };
 
@@ -46,7 +47,17 @@ export class ConnectionComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          console.log(data);
+          console.log('connect component: ' + data);
+          if (data != null) {
+            this.router.navigate([this.returnUrl]);
+            this.alertService.success('Good!');
+          } else {
+            // alert('Email ou mot de passe incorrect.');
+            this.alertService.error('Email ou mot de passe incorrect.');
+            this.loading = false;
+          }
+
         },
         error => {
           this.alertService.error(error);

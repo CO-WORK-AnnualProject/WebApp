@@ -10,7 +10,7 @@ import { FormInformationsComponent } from './form-informations/form-informations
 import { FormAboInformationsComponent } from './form-abo-informations/form-abo-informations.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { CustomerSpaceComponent } from './customer-space/customer-space.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {AlertService} from './_services/alert.service';
 import {LoginService} from './_services/login.service';
@@ -41,7 +41,7 @@ import {AuthentificationGuard} from './_guards/authentification.guard';
     AlertService,
     AuthentificationService,
     LoginService,
-    AuthentificationGuard
+    AuthentificationGuard,
   ],
   bootstrap: [AppComponent]
 })

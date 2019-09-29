@@ -1,7 +1,11 @@
 <!-- Masthead -->
+
+
 <form #loginForm="ngForm" (ngSubmit)="onFormSubmit(loginForm)">
 
   <header class="masthead">
+
+    <app-alert></app-alert>
 
     <div class="container h-100">
 
@@ -32,7 +36,7 @@
                  placeholder="Entrer votre mot de passe"
                  #inputPassword="ngModel"
                  required>
-          <span *ngIf="inputEmail.invalid && inputPassword.touched">Le mot de passe est requis.</span>
+          <span *ngIf="inputPassword.invalid && inputPassword.touched">Le mot de passe est requis.</span>
 
           <hr class="divider my-4">
 

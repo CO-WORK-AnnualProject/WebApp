@@ -12,11 +12,11 @@ import {AuthentificationGuard} from './_guards/authentification.guard';
 const routes: Routes = [
   { path: 'signin', component: ConnectionComponent },
   { path: 'signup', component: RegistrationComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthentificationGuard] },
-  { path: '', component: HomeComponent, canActivate: [AuthentificationGuard] },
+  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'abo', component: FormAboInformationsComponent },
-  { path: 'administration', component: AdministrationComponent },
-  { path: 'customerSpace', component: CustomerSpaceComponent }
+  { path: 'administration', component: AdministrationComponent, canActivate: [AuthentificationGuard]},
+  { path: 'customerSpace', component: CustomerSpaceComponent, canActivate: [AuthentificationGuard] }
 ];
 
 @NgModule({

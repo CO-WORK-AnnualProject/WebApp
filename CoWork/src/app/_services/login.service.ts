@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class LoginService {
 
-  URI = 'http://127.0.0.1:8081';
+  URI = 'https://co-work-lrams.herokuapp.com'; // 'http://127.0.0.1:8081'
 
   constructor(private http: HttpClient) { }
 
