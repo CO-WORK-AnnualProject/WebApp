@@ -5,7 +5,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthentificationService} from '../_services/authentification.service';
 import {first} from 'rxjs/operators';
 import {AlertService} from '../_services/alert.service';
-import {isLowerCase} from "tslint/lib/utils";
 
 @Component({
   selector: 'app-connection',
@@ -15,7 +14,6 @@ import {isLowerCase} from "tslint/lib/utils";
 
 export class ConnectionComponent implements OnInit {
   loading = false;
-  returnUrl: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,9 +24,6 @@ export class ConnectionComponent implements OnInit {
   ngOnInit() {
     // reset login status
     this.authenticationService.logout();
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = 'administration';
   }
 
   onFormSubmit(loginForm: NgForm) {
@@ -47,13 +42,17 @@ export class ConnectionComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data);
-          console.log('connect component: ' + data);
+/*          console.log(data[0]);
+          console.log('connect component: ' + data);*/
           if (data != null) {
-            this.router.navigate([this.returnUrl]);
-            this.alertService.success('Good!');
+            this.router.navigate(['customerSpace']).then(e => {
+              if (e) {
+                console.log('Connection réussi, redirection vers l\'espace client');
+              } else {
+                console.log('Redirection vers l\'espace client a échoué');
+              }
+            });
           } else {
-            // alert('Email ou mot de passe incorrect.');
             this.alertService.error('Email ou mot de passe incorrect.');
             this.loading = false;
           }

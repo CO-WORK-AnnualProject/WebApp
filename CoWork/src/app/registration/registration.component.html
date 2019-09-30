@@ -1,6 +1,144 @@
 <form>
 
-  <app-form-informations></app-form-informations>
-  <app-form-abo-informations></app-form-abo-informations>
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-10 align-self-end">
+          <input type="email" class="form-control btn-xl" id="inputEmail" aria-describedby="emailHelp" placeholder="Entrer votre email" required>
+          <hr class="none my-4">
+          <input type="password" class="form-control btn-xl" id="inputPassword" aria-describedby="passwordHelp" placeholder="Entrer votre mot de passe" required>
+          <hr class="none my-4">
+          <input type="password" class="form-control btn-xl" id="inputConfirmPassword" aria-describedby="passwordHelp" placeholder="Confirmer votre mot de passe" required>
+          <hr class="divider my-4">
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control btn-xl" id="inputFirstName" aria-describedby="firstNameHelp" placeholder="Entrer votre nom" required>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control btn-xl" id="inputLastName" aria-describedby="lastNameHelp" placeholder="Entrer votre prénom" required>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control btn-xl" id="inputSocietyName" aria-describedby="societyNameHelp" placeholder="Et le nom de votre société">
+            </div>
+          </div>
+          <hr class="divider my-4">
+        </div>
+        <div class="col-lg-8 align-self-baseline">
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="/signup#abo" id="chooseAbo">Choisir votre abonnement<br><i class="fas fa-2x fa-angle-down"></i></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Services Section -->
+  <section class="page-section" id="abo">
+    <div class="container">
+      <h2 class="text-center mt-0">Choisissez votre abonnement</h2>
+      <hr class="divider my-4">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Sans abonnement</h3>
+            <hr class="none my-4">
+            <p class="text-muted mb-0">Payez le temps passé sur place, les consommations sont incluses et à volonté ! Accessible sans réservation ou abonnement.</p>
+            <hr class="divider my-4">
+            <h3 class="h6 mb-2">Tarifs par personne</h3>
+            <p class="text-muted mb-0">
+              Première heure : 5€<br>
+              ½ heure suivante : 2,50€<br>
+              Journée (5 heures et plus) : 24€
+            </p>
+            <hr class="divider my-4">
+            <h3 class="h6 mb-2">Réduction étudiante</h3>
+            <p class="text-muted mb-0">
+              Journée (5 heures et plus) : 20€
+            </p>
+            <hr class="divider my-4">
+            <p class="text-muted mb-0">
+              Accès open space (sans possibilité de changer d'adresse),
+              Wifi,
+              Snacking & boissons à volonté,
+              Cabines téléphonique.
+            </p>
+            <hr class="divider my-4">
+            <div class="form-check form-check">
+              <input class="form-check-input" type="radio" name="radioOptions" id="radioBtnNoAbo" value="noAbo" checked>
+              <label class="form-check-label" for="radioBtnNoAbo">Sans abonnement</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Abonnement simple</h3>
+            <hr class="none my-4">
+            <p class="text-muted mb-0">Rejoignez la communauté CO'WORK et bénéficiez de tarifs préférentiels !</p>
+            <hr class="divider my-4">
+            <h3 class="h6 mb-2">Tarifs membre par personne</h3>
+            <p class="text-muted mb-0">
+              Première heure : 4€<br>
+              ½ heure suivante : 2€<br>
+              Journée (5 heures et plus) : 20€
+            </p>
+            <hr class="divider my-4">
+            <p class="text-muted mb-0">
+              Accès open space,
+              Wifi,
+              Snacking & boissons à volonté,
+              Cabines téléphonique,
+              Accès libre à tous les espaces,
+              Accès premium au HUB".
+            </p>
+            <hr class="divider my-4">
+            <input class="form-check-input" type="radio" name="radioOptions" id="radioBtnSimpleNoEngagement" value="simpleNoEngagement">
+            <label class="form-check-label" for="radioBtnSimpleNoEngagement"><h3 class="h6 mb-2">Devenir membre SANS engagement</h3></label>
+            <p class="text-muted mb-0">
+              24€ TTC / mois
+            </p>
+            <hr class="divider my-4">
+            <input class="form-check-input" type="radio" name="radioOptions" id="radioBtnSimpleEngagement" value="simpleEngagement">
+            <label class="form-check-label" for="radioBtnSimpleEngagement"><h3 class="h6 mb-2">Devenir membre AVEC engagement de 12 mois</h3></label>
+            <p class="text-muted mb-0">
+              20€ TTC / mois
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="mt-5">
+            <i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i>
+            <h3 class="h4 mb-2">Abonnement Résident</h3>
+            <hr class="none my-4">
+            <p class="text-muted mb-0">Rejoignez la communauté CO'WORK et devenez membre résident. Bénéficiez d'un accès en illimité 7/7j !</p>
+            <hr class="divider my-4">
+            <input class="form-check-input" type="radio" name="radioOptions" id="radioBtnResidentNoEngagement" value="residentNoEngagement">
+            <label class="form-check-label" for="radioBtnResidentNoEngagement"><h3 class="h6 mb-2">Devenir membre résident SANS engagement</h3></label>
+            <p class="text-muted mb-0">
+              300€ TTC / mois
+            </p>
+            <hr class="divider my-4">
+            <input class="form-check-input" type="radio" name="radioOptions" id="radioBtnResidentEngagement" value="residentEngagement">
+            <label class="form-check-label" for="radioBtnResidentEngagement"><h3 class="h6 mb-2">Devenir membre résident AVEC engagement de 8 mois</h3></label>
+            <p class="text-muted mb-0">
+              252€ TTC / mois
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr class="none my-4">
+    </div>
+
+    <div class="row h-75 align-items-center justify-content-center text-center">
+      <p class="text-muted mb-0">
+        <input class="form-check-input" type="checkbox" name="checkboxOptions" id="conditionsGenerales" value="residentEngagement">
+        <label class="form-check-label" for="conditionsGenerales">En cochant cette case vous acceptez les Conditions générales.</label>
+      </p>
+      <div class="col-lg-12 align-self-baseline">
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="./index.html" id="finalize">Finaliser votre inscription</a>
+      </div>
+    </div>
+
+  </section>
 
 </form>

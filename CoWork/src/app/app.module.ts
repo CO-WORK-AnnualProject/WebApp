@@ -6,8 +6,6 @@ import { ConnectionComponent } from './connection/connection.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { HomeComponent } from './home/home.component';
-import { FormInformationsComponent } from './form-informations/form-informations.component';
-import { FormAboInformationsComponent } from './form-abo-informations/form-abo-informations.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { CustomerSpaceComponent } from './customer-space/customer-space.component';
 import { HttpClientModule} from '@angular/common/http';
@@ -17,6 +15,10 @@ import {LoginService} from './_services/login.service';
 import {AuthentificationService} from './_services/authentification.service';
 import { AlertComponent } from './alert/alert.component';
 import {AuthentificationGuard} from './_guards/authentification.guard';
+import { ContactComponent } from './contact/contact.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AboutComponent } from './about/about.component';
+import { ServicesOfferedComponent } from './services-offered/services-offered.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +27,13 @@ import {AuthentificationGuard} from './_guards/authentification.guard';
     RegistrationComponent,
     NavigationBarComponent,
     HomeComponent,
-    FormInformationsComponent,
-    FormAboInformationsComponent,
     AdministrationComponent,
     CustomerSpaceComponent,
-    AlertComponent
+    AlertComponent,
+    ContactComponent,
+    NotFoundComponent,
+    AboutComponent,
+    ServicesOfferedComponent
   ],
   imports: [
     BrowserModule,

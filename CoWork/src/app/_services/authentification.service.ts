@@ -13,6 +13,7 @@ export class AuthentificationService {
   // URI = 'https://co-work-lrams.herokuapp.com';
   URI = 'http://127.0.0.1:5000';
 
+  private logged = new BehaviorSubject<boolean>(false);
   private currentProfilSubject: BehaviorSubject<Profil>;
   currentProfil: Observable<Profil>;
 
@@ -25,6 +26,10 @@ export class AuthentificationService {
     return this.currentProfilSubject.value;
   }
 
+  public get isLogged() {
+    return this.logged.asObservable();
+  }
+
 
   public login(profilConnect: ConnectInfo) {
     return this.http.post<any>(`${this.URI}/login`, profilConnect)
@@ -34,7 +39,8 @@ export class AuthentificationService {
         if (profil) {
           console.log('auth service: ' + profil);
           localStorage.setItem('currentUser', JSON.stringify(profil));
-          this.currentProfilSubject = profil;
+          this.currentProfilSubject.next(profil);
+          this.logged.next(true);
         }
         return profil;
       }));
@@ -44,6 +50,7 @@ export class AuthentificationService {
   public logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    this.logged.next(false);
   }
 
 }
