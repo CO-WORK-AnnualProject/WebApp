@@ -54,14 +54,13 @@ export class ConnectionComponent implements OnInit {
             });
           } else {
             this.alertService.error('Email ou mot de passe incorrect.');
-            this.loading = false;
           }
 
         },
         error => {
           this.alertService.error(error);
-          this.loading = false;
         });
+    this.loading = false;
   }
 
 }

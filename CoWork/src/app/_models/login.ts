@@ -1,11 +1,16 @@
 export interface Profil {
   _id: string;
-  email: string;
+  profilDetail: ProfilRegister;
+}
+
+export interface ProfilRegister {
+  connectDetail: ConnectInfo;
   lastName: string;
   firstName: string;
-  subscription: string;
   socityName: string;
-  isLogged: boolean;
+  subscription: string;
+  isEngaged: boolean;
+  isStudent: boolean;
 }
 
 export interface ConnectInfo {

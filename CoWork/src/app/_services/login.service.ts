@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Profil } from '../_models/login';
+import {Profil, ProfilRegister} from '../_models/login';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,7 +18,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  public register(profil: Profil) {
+  public register(profil: ProfilRegister) {
     return this.http.post(`${this.URI}/addUser`, profil);
   }
 
