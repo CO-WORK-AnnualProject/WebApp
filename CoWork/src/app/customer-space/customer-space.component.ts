@@ -16,7 +16,7 @@ export class CustomerSpaceComponent implements OnInit {
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         this.currentUser = this.auth.currentUserValue[0];
-        console.log(this.currentUser.firstName);
+        console.log(this.currentUser.profilDetail.firstName);
       }
     });
   }

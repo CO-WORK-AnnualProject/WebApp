@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthentificationService} from './_services/authentification.service';
 import {Profil} from './_models/login';
-import {NavigationEnd, Router} from "@angular/router";
+import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +15,9 @@ export class AppComponent {
   constructor(private router: Router, private auth: AuthentificationService) {
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
-        console.log("val instanceof NavigationEnd");
+        console.log('val instanceof NavigationEnd');
         this.currentUser = this.auth.currentUserValue[0];
-        console.log(this.currentUser.lastName);
+        console.log(this.currentUser.profilDetail.lastName);
       }
     });
   }

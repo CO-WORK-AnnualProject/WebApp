@@ -10,8 +10,8 @@ import {map} from 'rxjs/operators';
 
 export class AuthentificationService {
 
-  URI = 'https://co-work-lrams.herokuapp.com';
-  // URI = 'http://127.0.0.1:5000';
+  // URI = 'https://co-work-lrams.herokuapp.com';
+  URI = 'http://127.0.0.1:5000';
 
   private logged = new BehaviorSubject<boolean>(false);
   private currentProfilSubject: BehaviorSubject<Profil>;
@@ -34,10 +34,7 @@ export class AuthentificationService {
   public login(profilConnect: ConnectInfo) {
     return this.http.post<any>(`${this.URI}/login`, profilConnect)
       .pipe(map(profil => {
-        // login successful if there's a jwt token in the response
-        console.log('auth service: ' + profil);
         if (profil) {
-          console.log('auth service: ' + profil);
           localStorage.setItem('currentUser', JSON.stringify(profil));
           this.currentProfilSubject.next(profil);
           this.logged.next(true);
@@ -48,7 +45,6 @@ export class AuthentificationService {
   }
 
   public logout() {
-    // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.logged.next(false);
   }

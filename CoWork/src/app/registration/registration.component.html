@@ -12,77 +12,78 @@
 
         <div class="col-lg-10 align-self-end">
 
-          <input type="email"
-                 ngModel
+          <input ngModel
                  email
+                 required
+                 #inputEmail="ngModel"
+                 type="email"
                  class="form-control btn-xl"
                  name="inputEmail"
                  id="inputEmail"
-                 placeholder="Entrer votre email"
-                 #inputEmail="ngModel"
-                 required>
+                 placeholder="Entrer votre email">
           <span *ngIf="inputEmail.invalid && inputEmail.touched">Vérifier votre email.</span>
 
           <hr class="none my-4">
 
-          <input type="password"
-                 ngModel
+          <input ngModel
+                 #inputPassword="ngModel"
+                 required
+                 type="password"
                  class="form-control btn-xl"
                  name="inputPassword"
                  id="inputPassword"
-                 placeholder="Entrer votre mot de passe"
-                 #inputPassword="ngModel"
-                 required>
+                 placeholder="Entrer votre mot de passe">
           <span *ngIf="inputPassword.invalid && inputPassword.touched">Le mot de passe est requis.</span>
 
           <hr class="none my-4">
 
-          <input type="password"
-                 ngModel
+          <input ngModel
+                 #inputConfirmPassword="ngModel"
+                 required
+                 type="password"
                  class="form-control btn-xl"
                  name="inputConfirmPassword"
                  id="inputConfirmPassword"
-                 placeholder="Confirmer votre mot de passe"
-                 #inputConfirmPassword="ngModel"
-                 required>
-          <span *ngIf="inputConfirmPassword.invalid && inputConfirmPassword.touched">Les mots de passes ne sont pas identiques.</span>
+                 placeholder="Confirmer votre mot de passe">
+          <span *ngIf="inputConfirmPassword.invalid && inputConfirmPassword.touched">La confirmation est requis</span>
+          <span *ngIf="!this.arePasswordSame">Les mots de passes ne sont pas identiques.</span>
 
           <hr class="divider my-4">
 
           <div class="row">
 
             <div class="col">
-              <input type="text"
-                     ngModel
+              <input ngModel
+                     #inputFirstName="ngModel"
+                     required
+                     type="text"
                      class="form-control btn-xl"
                      name="inputFirstName"
                      id="inputFirstName"
-                     placeholder="Entrer votre nom"
-                     #inputFirstName="ngModel"
-                     required>
+                     placeholder="Entrer votre nom">
               <span *ngIf="inputFirstName.invalid && inputFirstName.touched">Votre nom est requis.</span>
             </div>
 
             <div class="col">
-              <input type="text"
-                     ngModel
+              <input ngModel
+                     #inputLastName="ngModel"
+                     required
+                     type="text"
                      class="form-control btn-xl"
                      name="inputLastName"
                      id="inputLastName"
-                     placeholder="Entrer votre prénom"
-                     #inputLastName="ngModel"
-                     required>
+                     placeholder="Entrer votre prénom">
               <span *ngIf="inputLastName.invalid && inputLastName.touched">Votre prénom est requis.</span>
             </div>
 
             <div class="col">
-              <input type="text"
-                     ngModel
+              <input ngModel
+                     #inputSocietyName="ngModel"
+                     type="text"
                      class="form-control btn-xl"
                      name="inputSocietyName"
                      id="inputSocietyName"
-                     placeholder="Entrer le nom de votre société"
-                     #inputSocietyName="ngModel">
+                     placeholder="Entrer le nom de votre société">
             </div>
 
           </div>
@@ -138,13 +139,15 @@
 
             <div class="form-check form-check">
 
-              <input class="form-check-input"
+              <input ngModel
+                     #student="ngModel"
+                     class="form-check-input"
                      type="checkbox"
-                     name="checkboxOptionsStudent"
+                     name="student"
                      id="student"
-                     value="isStudent">
+                     value="student">
 
-              <label class="form-check-label" for="conditionsGenerales">
+              <label class="form-check-label" for="student">
                 <h3 class="h6 mb-2">Je suis étudiant(e) !</h3>
               </label>
 
@@ -165,12 +168,14 @@
 
             <div class="form-check form-check">
 
-              <input class="form-check-input"
+              <input ngModel
+                     checked
+                     #radioOptions="ngModel"
+                     class="form-check-input"
                      type="radio"
                      name="radioOptions"
                      id="radioBtnNoAbo"
-                     value="noAbo"
-                     checked>
+                     value="noAbo">
 
               <label class="form-check-label" for="radioBtnNoAbo">
                 Sans abonnement
@@ -218,13 +223,15 @@
 
             <hr class="divider my-4">
 
-            <input class="form-check-input"
+            <input ngModel
+                   #radioOptions="ngModel"
+                   class="form-check-input"
                    type="radio"
                    name="radioOptions"
-                   id="radioBtnSimpleNoEngagement"
-                   value="simpleNoEngagement">
+                   id="radioBtnSimple"
+                   value="simple">
 
-            <label class="form-check-label" for="radioBtnSimpleNoEngagement">
+            <label class="form-check-label" for="radioBtnSimple">
               <h3 class="h6 mb-2">Devenir membre SANS engagement</h3>
             </label>
 
@@ -233,11 +240,13 @@
             </p>
             <hr class="divider my-4">
 
-            <input class="form-check-input"
+            <input ngModel
+                   #radioOptions="ngModel"
+                   class="form-check-input"
                    type="radio"
                    name="radioOptions"
                    id="radioBtnSimpleEngagement"
-                   value="simpleEngagement">
+                   value="simple_Engagement">
 
             <label class="form-check-label" for="radioBtnSimpleEngagement">
               <h3 class="h6 mb-2">Devenir membre AVEC engagement de 12 mois</h3>
@@ -265,13 +274,15 @@
 
             <hr class="divider my-4">
 
-            <input class="form-check-input"
+            <input ngModel
+                   #radioOptions="ngModel"
+                   class="form-check-input"
                    type="radio"
                    name="radioOptions"
-                   id="radioBtnResidentNoEngagement"
-                   value="residentNoEngagement">
+                   id="radioBtnResident"
+                   value="resident">
 
-            <label class="form-check-label" for="radioBtnResidentNoEngagement">
+            <label class="form-check-label" for="radioBtnResident">
               <h3 class="h6 mb-2">Devenir membre résident SANS engagement</h3>
             </label>
 
@@ -281,11 +292,13 @@
 
             <hr class="divider my-4">
 
-            <input class="form-check-input"
+            <input ngModel
+                   #radioOptions="ngModel"
+                   class="form-check-input"
                    type="radio"
                    name="radioOptions"
                    id="radioBtnResidentEngagement"
-                   value="residentEngagement">
+                   value="resident_Engagement">
 
             <label class="form-check-label" for="radioBtnResidentEngagement">
               <h3 class="h6 mb-2">Devenir membre résident AVEC engagement de 8 mois</h3>
@@ -309,16 +322,19 @@
 
       <p class="text-muted mb-0">
 
-        <input class="form-check-input"
+        <input ngModel
+               required
+               #generalCondition="ngModel"
+               class="form-check-input"
                type="checkbox"
-               name="checkboxOptions"
-               id="conditionsGenerales"
-               value="residentEngagement"
-               required>
+               name="generalCondition"
+               id="generalCondition"
+               value="generalCondition">
 
-        <label class="form-check-label" for="conditionsGenerales">
+        <label class="form-check-label" for="generalCondition">
           En cochant cette case vous acceptez les Conditions générales.
         </label>
+        <span *ngIf="!this.acceptGeneralCondition">Vous devez accepter les conditions générales pour continuer.</span>
 
       </p>
 

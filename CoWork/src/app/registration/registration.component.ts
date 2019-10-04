@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthentificationService} from '../_services/authentification.service';
 import {AlertService} from '../_services/alert.service';
 import {LoginService} from '../_services/login.service';
+import {mustMatch} from '../_helpers/must-match.validator';
 
 @Component({
   selector: 'app-registration',
@@ -14,8 +15,11 @@ import {LoginService} from '../_services/login.service';
 })
 
 export class RegistrationComponent implements OnInit {
-
   loading = false;
+  arePasswordSame = true;
+  acceptGeneralCondition = true;
+  isEngaged = false;
+  isStudent = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,32 +31,42 @@ export class RegistrationComponent implements OnInit {
 
 
   ngOnInit() {
-    // reset login status
     this.authenticationService.logout();
   }
 
   onFormSubmit(registerForm: NgForm) {
-    const connectinfo: ConnectInfo = {
-      email: registerForm.value.inputEmail.toLowerCase(),
-      password: '',
-    };
+    this.loading = true;
 
-    const profilRegistration: ProfilRegister = {
-      connectDetail: connectinfo,
-      lastName: '',
-      firstName: '',
-      socityName: '',
-      subscription: '',
-      isEngaged: false,
-      isStudent: false
-    };
+    this.isEngaged = registerForm.value.radioOptions.toString().indexOf('_Engagement') > 0;
+    this.isStudent = registerForm.value.student != null && registerForm.value.student !== '';
 
-    // stop here if form is invalid
-    if (registerForm.invalid) {
+    this.arePasswordSame = mustMatch(registerForm.value.inputPassword, registerForm.value.inputConfirmPassword);
+    this.acceptGeneralCondition = registerForm.value.generalCondition != null && registerForm.value.generalCondition !== '';
+
+    if (registerForm.invalid && !this.arePasswordSame && !this.acceptGeneralCondition) {
+      this.loading = false;
       return;
     }
 
-    this.loading = true;
+    //
+
+    const connectInfo: ConnectInfo = {
+      email: registerForm.value.inputEmail.toLowerCase(),
+      password: registerForm.value.inputPassword,
+    };
+
+    const profilRegistration: ProfilRegister = {
+      connectDetail: connectInfo,
+      lastName: registerForm.value.inputLastName,
+      firstName: registerForm.value.inputFirstName,
+      socityName: registerForm.value.inputSocietyName,
+      subscription: registerForm.value.radioOptions.toString().replace('_Engagement',''),
+      isEngaged: this.isEngaged,
+      isStudent: this.isStudent
+    };
+
+    //
+
     this.loginService.register(profilRegistration)
       .pipe(first())
       .subscribe(
@@ -77,13 +91,3 @@ export class RegistrationComponent implements OnInit {
   }
 
 }
-
-/**
- * residentEngagement
- * residentNoEngagement
- * simpleEngagement
- * simpleNoEngagement
- * noAbo
- *
- *
- */
