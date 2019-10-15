@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ConnectInfo} from '../_models/login';
+import {ConnectInfo, ProfilRegister} from '../_models/login';
 import {NgForm} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthentificationService} from '../_services/authentification.service';

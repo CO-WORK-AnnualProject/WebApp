@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Profil} from "../_models/login";
-import {NavigationEnd, Router} from "@angular/router";
+import {LocalProfil} from '../_models/login';
+import {NavigationEnd, Router} from '@angular/router';
 import {AuthentificationService} from '../_services/authentification.service';
 
 @Component({
@@ -10,13 +10,13 @@ import {AuthentificationService} from '../_services/authentification.service';
 })
 export class CustomerSpaceComponent implements OnInit {
 
-  currentUser: Profil;
+  currentUser: LocalProfil;
 
   constructor(private router: Router, private auth: AuthentificationService) {
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         this.currentUser = this.auth.currentUserValue[0];
-        console.log(this.currentUser.profilDetail.firstName);
+        console.log("TESTTTTTT  = " + this.currentUser.firstName);
       }
     });
   }

@@ -35,6 +35,7 @@ export class AuthentificationService {
     return this.http.post<any>(`${this.URI}/login`, profilConnect)
       .pipe(map(profil => {
         if (profil) {
+          console.log(JSON.stringify(profil));
           localStorage.setItem('currentUser', JSON.stringify(profil));
           this.currentProfilSubject.next(profil);
           this.logged.next(true);

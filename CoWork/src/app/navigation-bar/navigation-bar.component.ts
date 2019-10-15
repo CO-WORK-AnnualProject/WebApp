@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {AuthentificationService} from '../_services/authentification.service';
-import {Profil} from '../_models/login';
+import {LocalProfil} from '../_models/login';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -12,7 +12,7 @@ import {Observable} from 'rxjs';
 export class NavigationBarComponent implements OnInit {
 
   isLogged$: Observable<boolean>;
-  currentUser: Profil;
+  currentUser: LocalProfil;
 
   constructor(private router: Router, private auth: AuthentificationService) {
     router.events.subscribe((val) => {
@@ -20,7 +20,7 @@ export class NavigationBarComponent implements OnInit {
         console.log('val instanceof NavigationEnd');
         this.isLogged$ = this.auth.isLogged;
         this.currentUser = this.auth.currentUserValue[0];
-        console.log(this.currentUser.profilDetail.firstName);
+        console.log(this.currentUser.firstName);
         console.log(this.isLogged$);
       }
     });
