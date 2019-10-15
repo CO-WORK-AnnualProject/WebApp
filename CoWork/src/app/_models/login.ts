@@ -29,4 +29,5 @@ export interface LocalProfil {
   subscription: string;
   isEngaged: boolean;
   isStudent: boolean;
+  engagementDate: string;
 }

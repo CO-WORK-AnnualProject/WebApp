@@ -57,9 +57,16 @@
             <!-- Card Body -->
             <div class="card-body">
               <div class="chart-pie">
-                Bonjour {{this.currentUser.firstName}} ! <i class="far fa-smile"></i>
+                Bonjour {{this.currentUser.lastName}} ! <i class="far fa-smile"></i>
                 <br>
-                ({{this.currentUser.subscription}})
+
+                <ng-template [ngIf]="this.currentUser.subscription == 'noAbo'" [ngIfElse]="aboSection">
+                  Vous n'avez pas d'abonement.
+                </ng-template>
+                <ng-template #aboSection>
+                  Vous avez un abonnement "{{this.currentUser.subscription}}" <div *ngIf="this.currentUser.isEngaged">et êtes engagé jusqu'au {{this.currentUser.engagementDate}}</div>
+                </ng-template>
+
                 <hr>
                 <h5>CO'WORK PLACE D'ITALIE</h5>
                 <hr>
