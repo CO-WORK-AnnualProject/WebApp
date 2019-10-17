@@ -12,25 +12,65 @@
 
         <div class="col-lg-10 align-self-end">
 
-          <input type="email"
+          <input type="text"
                  ngModel
-                 email
                  class="form-control btn-xl"
-                 name="inputEmail"
-                 id="inputEmail"
-                 aria-describedby="emailHelp"
-                 placeholder="Entrer votre email"
-                 #inputEmail="ngModel"
+                 name="inputObject"
+                 id="inputObject"
+                 placeholder="L'objet de votre demande"
+                 #inputObject="ngModel"
                  required>
-          <span *ngIf="inputEmail.invalid && inputEmail.touched">Vérifier votre email.</span>
+          <span style="color: darkred" *ngIf="inputObject.invalid && inputObject.touched">L'objet de l'incident est requis.</span>
+
+          <hr class="none my-4">
+
+          <div class="row">
+
+            <div class="col">
+              <label style="color: white" for="selectEquipement">Choisissez l'équipement associé à l'incident</label>
+              <select ngModel
+                      required
+                      #selectEquipement="ngModel"
+                      class="form-control"
+                      style="border-radius: 10rem"
+                      name="selectEquipement"
+                      id="selectEquipement">
+                <option [value]="laptop._id"
+                        *ngFor="let laptop of this.openSpaceAttachedOnUser.equipments.laptop">{{laptop.name}}</option>
+                <option [value]="printer._id"
+                        *ngFor="let printer of this.openSpaceAttachedOnUser.equipments.printer">{{printer.name}}</option>
+              </select>
+            </div>
+
+            <div class="col">
+              <label style="color: white" for="selectEquipement">Espace lié à votre demande</label>
+              <input class="form-control" style="border-radius: 10rem" type="text" placeholder="{{this.openSpaceAttachedOnUser.name}}"
+                     readonly>
+            </div>
+          </div>
+
+          <hr class="none my-4">
+
+          <textarea type="text"
+                    ngModel
+                    class="form-control btn-xl"
+                    name="inputDescription"
+                    id="inputDescription"
+                    placeholder="Description"
+                    #inputDescription="ngModel"
+                    rows="3"
+                    required>
+          </textarea>
+          <span style="color: darkred" *ngIf="inputDescription.invalid && inputDescription.touched">Veuillez décrire le problème.</span>
 
           <hr class="divider my-4">
 
         </div>
 
         <div class="col-lg-8 align-self-baseline">
-          <button class="btn btn-primary btn-xl js-scroll-trigger" id="signaler">Envoyer votre incident</button>
-          <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+          <button class="btn btn-primary btn-xl js-scroll-trigger" id="login">Envoyer l'incident</button>
+          <img *ngIf="loading"
+               src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
           <button class="btn btn-secondary btn-xl js-scroll-trigger" routerLink="../customerSpace">Retour</button>
         </div>
 

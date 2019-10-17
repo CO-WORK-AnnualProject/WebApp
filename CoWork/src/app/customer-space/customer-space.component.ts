@@ -16,11 +16,13 @@ export class CustomerSpaceComponent implements OnInit {
   openSpaceAttachedOnUser: OpenSpace;
 
 
-  constructor(private router: Router, private auth: AuthentificationService, private openSpace: OpenSpaceService) {
+  constructor(private router: Router,
+              private auth: AuthentificationService,
+              private openSpace: OpenSpaceService)
+  {
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         this.currentUser = this.auth.currentUserValue[0];
-        console.log('jesuis');
       }
     });
   }
