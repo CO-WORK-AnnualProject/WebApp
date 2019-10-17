@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {ConnectInfo, ProfilRegister} from '../_models/login';
 import {first} from 'rxjs/operators';
@@ -7,6 +7,8 @@ import {AuthentificationService} from '../_services/authentification.service';
 import {AlertService} from '../_services/alert.service';
 import {LoginService} from '../_services/login.service';
 import {mustMatch} from '../_helpers/must-match.validator';
+import {OpenSpace} from '../_models/open_space';
+import {OpenSpaceService} from '../_services/open-space.service';
 
 @Component({
   selector: 'app-registration',
@@ -20,18 +22,21 @@ export class RegistrationComponent implements OnInit {
   acceptGeneralCondition = true;
   isEngaged = false;
   isStudent = false;
+  openSpaces: OpenSpace[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthentificationService,
     private loginService: LoginService,
-    private alertService: AlertService) {}
-
-
+    private alertService: AlertService,
+    private openSpace: OpenSpaceService) {
+  }
 
   ngOnInit() {
     this.authenticationService.logout();
+    this.openSpace.getAll()
+      .subscribe(data => this.openSpaces = data);
   }
 
   onFormSubmit(registerForm: NgForm) {
@@ -43,7 +48,8 @@ export class RegistrationComponent implements OnInit {
     this.arePasswordSame = mustMatch(registerForm.value.inputPassword, registerForm.value.inputConfirmPassword);
     this.acceptGeneralCondition = registerForm.value.generalCondition != null && registerForm.value.generalCondition !== '';
 
-    if (registerForm.invalid && !this.arePasswordSame && !this.acceptGeneralCondition) {
+    if (registerForm.invalid || !this.arePasswordSame || !this.acceptGeneralCondition) {
+      alert('Vérifier tous les champs');
       this.loading = false;
       return;
     }
@@ -60,9 +66,10 @@ export class RegistrationComponent implements OnInit {
       lastName: registerForm.value.inputLastName,
       firstName: registerForm.value.inputFirstName,
       socityName: registerForm.value.inputSocietyName,
-      subscription: registerForm.value.radioOptions.toString().replace('_Engagement',''),
+      subscription: registerForm.value.radioOptions.toString().replace('_Engagement', ''),
       isEngaged: this.isEngaged,
-      isStudent: this.isStudent
+      isStudent: this.isStudent,
+      idOpenSpace: registerForm.value.selectOpenSpace
     };
 
     //

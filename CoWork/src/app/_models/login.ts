@@ -11,6 +11,7 @@ export interface ProfilRegister {
   subscription: string;
   isEngaged: boolean;
   isStudent: boolean;
+  idOpenSpace: string;
 }
 
 export interface ConnectInfo {
@@ -30,4 +31,5 @@ export interface LocalProfil {
   isEngaged: boolean;
   isStudent: boolean;
   engagementDate: string;
+  idOpenSpace: string;
 }

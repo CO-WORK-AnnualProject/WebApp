@@ -13,8 +13,8 @@ const httpOptions = {
 })
 export class LoginService {
 
-  // URI = 'https://co-work-lrams.herokuapp.com';
-  URI = 'http://127.0.0.1:5000';
+  URI = 'https://co-work-lrams.herokuapp.com';
+  // URI = 'http://127.0.0.1:5000';
 
   constructor(private http: HttpClient) { }
 

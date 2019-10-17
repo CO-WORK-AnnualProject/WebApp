@@ -42,8 +42,6 @@ export class ConnectionComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-/*          console.log(data[0]);
-          console.log('connect component: ' + data);*/
           if (data != null) {
             this.router.navigate(['customerSpace']).then(e => {
               if (e) {

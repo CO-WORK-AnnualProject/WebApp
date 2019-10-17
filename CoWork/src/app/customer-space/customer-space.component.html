@@ -1,19 +1,52 @@
 <!-- Masthead -->
 <header class="masthead">
+
   <div class="container h-100">
+
     <div class="row h-100 align-items-center justify-content-center text-center">
+
       <!-- Content Row -->
       <div class="row">
 
+        <div class="col-xl-12 col-lg-12">
+
+          <div class="card shadow mb-1">
+
+            <div class="card-body">
+
+              <div class="chart-area">
+                <h5>Bonjour {{this.currentUser.lastName}} ! <i class="far fa-smile"></i></h5>
+
+                <ng-template [ngIf]="this.currentUser.subscription == 'noAbo'" [ngIfElse]="aboSection">
+                  Vous n'avez pas d'abonement.
+                </ng-template>
+
+                <ng-template #aboSection>
+                  <span>Vous avez un abonnement "{{this.currentUser.subscription}}" <span *ngIf="this.currentUser.isEngaged">et êtes engagé jusqu'au {{this.currentUser.engagementDate}}</span></span>
+                </ng-template>
+
+                <span *ngIf="this.currentUser.subscription == 'admin'">vous pouvez donc accéder à l'espace <a routerLink="../administration">administration</a></span>
+              </div>
+            </div>
+
+
+
+          </div>
+
+        </div>
         <div class="col-xl-8 col-lg-7">
 
           <!-- Area Chart -->
           <div class="card shadow mb-4">
+
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Vos réservations d'équipement</h6>
             </div>
+
             <div class="card-body">
+
               <div class="chart-area">
+
                 10 ordinateurs et 1 imprimante pour le Vendredi 23 Juin 2018
                 <hr>
                 10 ordinateurs pour le Mercredi 01 Mai 2018
@@ -27,8 +60,11 @@
                 1 imprimante pour le Lundi 15 Spetembre 2018
                 <hr>
               </div>
+
               <a class="btn btn-primary btn-xl js-scroll-trigger" href="#" id="reserveEquipment">Réserver des équipements</a>
+
             </div>
+
           </div>
 
           <!-- Bar Chart -->
@@ -49,44 +85,51 @@
 
         <!-- Donut Chart -->
         <div class="col-xl-4 col-lg-5">
+
           <div class="card shadow mb-4">
+
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Votre open space</h6>
             </div>
+
             <!-- Card Body -->
             <div class="card-body">
+
               <div class="chart-pie">
-                Bonjour {{this.currentUser.lastName}} ! <i class="far fa-smile"></i>
-                <br>
 
-                <ng-template [ngIf]="this.currentUser.subscription == 'noAbo'" [ngIfElse]="aboSection">
-                  Vous n'avez pas d'abonement.
-                </ng-template>
-                <ng-template #aboSection>
-                  Vous avez un abonnement "{{this.currentUser.subscription}}" <div *ngIf="this.currentUser.isEngaged">et êtes engagé jusqu'au {{this.currentUser.engagementDate}}</div>
-                </ng-template>
+                <h5>{{this.openSpaceAttachedOnUser.name}}</h5>
 
                 <hr>
-                <h5>CO'WORK PLACE D'ITALIE</h5>
-                <hr>
+
                 <h5>À votre disposition</h5>
-                Wi-fi très haut débit<br>
-                Plateaux membres<br>
-                Boissons à volonté<br>
-                5 salles de réunion<br>
-                4 salles d'appel<br>
-                3 salons cosy<br>
-                1 imprimante<br>
-                20 ordinateurs portables
+
+                <div *ngFor="let openSpaceOption of this.openSpaceAttachedOnUser.options">
+                  {{openSpaceOption}}<br>
+                </div>
+                {{this.openSpaceAttachedOnUser.rooms.meeting.length}} salles de réunion<br>
+                {{this.openSpaceAttachedOnUser.rooms.call.length}} salles d'appel<br>
+                {{this.openSpaceAttachedOnUser.equipments.printer.length}} imprimantes<br>
+                {{this.openSpaceAttachedOnUser.equipments.laptop.length}} ordinateurs portables
                 <hr>
                 <h5>Horaires</h5>
-                Lundi à Jeudi : de 9h à 20h<br>
-                Vendredi : de 9h à 20h<br>
-                Samedi et Dimanche : de 11h à 20h
+                Lundi : {{this.openSpaceAttachedOnUser.schedule.Lundi.start_time}}
+                à {{this.openSpaceAttachedOnUser.schedule.Lundi.end_time}}<br>
+                Mardi : {{this.openSpaceAttachedOnUser.schedule.Mardi.start_time}}
+                à {{this.openSpaceAttachedOnUser.schedule.Mardi.end_time}}<br>
+                Mercredi : {{this.openSpaceAttachedOnUser.schedule.Mercredi.start_time}}
+                à {{this.openSpaceAttachedOnUser.schedule.Mercredi.end_time}}<br>
+                Jeudi : {{this.openSpaceAttachedOnUser.schedule.Jeudi.start_time}}
+                à {{this.openSpaceAttachedOnUser.schedule.Jeudi.end_time}}<br>
+                Vendredi : {{this.openSpaceAttachedOnUser.schedule.Vendredi.start_time}}
+                à {{this.openSpaceAttachedOnUser.schedule.Vendredi.end_time}}<br>
+                Samedi : {{this.openSpaceAttachedOnUser.schedule.Samedi.start_time}}
+                à {{this.openSpaceAttachedOnUser.schedule.Samedi.end_time}}<br>
+                Dimanche : {{this.openSpaceAttachedOnUser.schedule.Dimanche.start_time}}
+                à {{this.openSpaceAttachedOnUser.schedule.Dimanche.end_time}}<br>
               </div>
               <hr>
-              <a class="btn btn-primary btn-xl js-scroll-trigger" href="#" id="reportIncident">Signaler un incident</a>
+              <a class="btn btn-primary btn-xl js-scroll-trigger" routerLink="../addTicketForm">Signaler un incident</a>
             </div>
           </div>
         </div>

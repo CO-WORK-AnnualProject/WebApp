@@ -10,8 +10,8 @@ import {map} from 'rxjs/operators';
 
 export class AuthentificationService {
 
-  // URI = 'https://co-work-lrams.herokuapp.com';
-  URI = 'http://127.0.0.1:5000';
+  URI = 'https://co-work-lrams.herokuapp.com';
+  // URI = 'http://127.0.0.1:5000';
 
   private logged = new BehaviorSubject<boolean>(false);
   private currentProfilSubject: BehaviorSubject<Profil>;

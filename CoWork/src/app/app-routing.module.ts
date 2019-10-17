@@ -9,6 +9,7 @@ import { AuthentificationGuard } from './_guards/authentification.guard';
 import { ContactComponent} from './contact/contact.component';
 import { NotFoundComponent} from './not-found/not-found.component';
 import { AboutComponent} from './about/about.component';
+import { TicketFormAddComponent} from './ticket-form-add/ticket-form-add.component';
 import { ServicesOfferedComponent} from './services-offered/services-offered.component';
 
 
@@ -17,8 +18,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'signin', component: ConnectionComponent },
   { path: 'signup', component: RegistrationComponent },
-  { path: 'administration', component: AdministrationComponent, canActivate: [AuthentificationGuard]},
+  { path: 'administration', component: AdministrationComponent, canActivate: [AuthentificationGuard] },
   { path: 'customerSpace', component: CustomerSpaceComponent, canActivate: [AuthentificationGuard] },
+  { path: 'addTicketForm', component: TicketFormAddComponent, canActivate: [AuthentificationGuard] },
   { path: 'services', component: ServicesOfferedComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent},

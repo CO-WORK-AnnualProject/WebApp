@@ -1,4 +1,3 @@
-<!-- Masthead -->
 
 <form #registerForm="ngForm" (ngSubmit)="onFormSubmit(registerForm)">
 
@@ -21,7 +20,7 @@
                  name="inputEmail"
                  id="inputEmail"
                  placeholder="Entrer votre email">
-          <span *ngIf="inputEmail.invalid && inputEmail.touched">Vérifier votre email.</span>
+          <span style="color: darkred" *ngIf="inputEmail.invalid && inputEmail.touched">Vérifier votre email.</span>
 
           <hr class="none my-4">
 
@@ -33,7 +32,7 @@
                  name="inputPassword"
                  id="inputPassword"
                  placeholder="Entrer votre mot de passe">
-          <span *ngIf="inputPassword.invalid && inputPassword.touched">Le mot de passe est requis.</span>
+          <span style="color: darkred" *ngIf="inputPassword.invalid && inputPassword.touched">Le mot de passe est requis.</span>
 
           <hr class="none my-4">
 
@@ -45,8 +44,8 @@
                  name="inputConfirmPassword"
                  id="inputConfirmPassword"
                  placeholder="Confirmer votre mot de passe">
-          <span *ngIf="inputConfirmPassword.invalid && inputConfirmPassword.touched">La confirmation est requis</span>
-          <span *ngIf="!this.arePasswordSame">Les mots de passes ne sont pas identiques.</span>
+          <span style="color: darkred" *ngIf="inputConfirmPassword.invalid && inputConfirmPassword.touched">La confirmation est requis</span>
+          <span style="color: darkred" *ngIf="!this.arePasswordSame">Les mots de passes ne sont pas identiques.</span>
 
           <hr class="divider my-4">
 
@@ -61,7 +60,7 @@
                      name="inputFirstName"
                      id="inputFirstName"
                      placeholder="Entrer votre nom">
-              <span *ngIf="inputFirstName.invalid && inputFirstName.touched">Votre nom est requis.</span>
+              <span style="color: darkred" *ngIf="inputFirstName.invalid && inputFirstName.touched">Votre nom est requis.</span>
             </div>
 
             <div class="col">
@@ -73,7 +72,7 @@
                      name="inputLastName"
                      id="inputLastName"
                      placeholder="Entrer votre prénom">
-              <span *ngIf="inputLastName.invalid && inputLastName.touched">Votre prénom est requis.</span>
+              <span style="color: darkred" *ngIf="inputLastName.invalid && inputLastName.touched">Votre prénom est requis.</span>
             </div>
 
             <div class="col">
@@ -88,12 +87,26 @@
 
           </div>
 
+          <hr class="none my-4">
+
+          <label style="color: white" for="selectOpenSpace">Choisissez l'espace de co-working auquel vous souhaitez être affilié :</label>
+          <select ngModel
+                  required
+                  #selectOpenSpace="ngModel"
+                  class="form-control"
+                  style="border-radius: 10rem"
+                  name="selectOpenSpace"
+                  id="selectOpenSpace">
+            <option [value]="openSpace._id" *ngFor="let openSpace of this.openSpaces">{{openSpace.name}}</option>
+          </select>
+
           <hr class="divider my-4">
 
         </div>
 
         <div class="col-lg-8 align-self-baseline">
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="/signup#abo" id="chooseAbo">Choisir votre abonnement<br><i class="fas fa-2x fa-angle-down"></i></a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="/signup#abo" id="chooseAbo">Choisir votre abonnement<br><i
+            class="fas fa-2x fa-angle-down"></i></a>
         </div>
 
       </div>
@@ -117,13 +130,18 @@
 
           <div class="mt-5">
 
-            <i class="fas fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i>
+            <i class="fas fa-2x fa-star text-primary mb-4"></i>
+            <i class="far fa-2x fa-star text-primary mb-4"></i>
+            <i class="far fa-2x fa-star text-primary mb-4"></i>
+            <i class="far fa-2x fa-star text-primary mb-4"></i>
+            <i class="far fa-2x fa-star text-primary mb-4"></i>
 
             <h3 class="h4 mb-2">Sans abonnement</h3>
 
             <hr class="none my-4">
 
-            <p class="text-muted mb-0">Payez le temps passé sur place, les consommations sont incluses et à volonté ! Accessible sans réservation ou abonnement.</p>
+            <p class="text-muted mb-0">Payez le temps passé sur place, les consommations sont incluses et à volonté !
+              Accessible sans réservation ou abonnement.</p>
 
             <hr class="divider my-4">
 
@@ -192,7 +210,9 @@
 
           <div class="mt-5">
 
-            <i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i>
+            <i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i
+            class="fas fa-2x fa-star text-primary mb-4"></i><i class="far fa-2x fa-star text-primary mb-4"></i><i
+            class="far fa-2x fa-star text-primary mb-4"></i>
 
             <h3 class="h4 mb-2">Abonnement simple</h3>
 
@@ -264,13 +284,16 @@
 
           <div class="mt-5">
 
-            <i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i>
+            <i class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i
+            class="fas fa-2x fa-star text-primary mb-4"></i><i class="fas fa-2x fa-star text-primary mb-4"></i><i
+            class="fas fa-2x fa-star text-primary mb-4"></i>
 
             <h3 class="h4 mb-2">Abonnement Résident</h3>
 
             <hr class="none my-4">
 
-            <p class="text-muted mb-0">Rejoignez la communauté CO'WORK et devenez membre résident. Bénéficiez d'un accès en illimité 7/7j !</p>
+            <p class="text-muted mb-0">Rejoignez la communauté CO'WORK et devenez membre résident. Bénéficiez d'un accès
+              en illimité 7/7j !</p>
 
             <hr class="divider my-4">
 
@@ -318,29 +341,31 @@
 
     </div>
 
-    <div class="row h-75 align-items-center justify-content-center text-center">
+    <div class="container">
 
-      <p class="text-muted mb-0">
+      <div class="row h-75 align-items-center justify-content-center text-center">
 
-        <input ngModel
-               required
-               #generalCondition="ngModel"
-               class="form-check-input"
-               type="checkbox"
-               name="generalCondition"
-               id="generalCondition"
-               value="generalCondition">
+        <div class="text-muted mb-0">
+          <input ngModel
+                 required
+                 #generalCondition="ngModel"
+                 class="form-check-input"
+                 type="checkbox"
+                 name="generalCondition"
+                 id="generalCondition"
+                 value="generalCondition">
 
-        <label class="form-check-label" for="generalCondition">
-          En cochant cette case vous acceptez les Conditions générales.
-        </label>
-        <span *ngIf="!this.acceptGeneralCondition">Vous devez accepter les conditions générales pour continuer.</span>
+          <label class="form-check-label" for="generalCondition">En cochant cette case vous acceptez les Conditions générales.</label>
+          <br>
+          <span style="color: darkred" *ngIf="!this.acceptGeneralCondition">Vous devez accepter les conditions générales pour continuer.</span>
+        </div>
 
-      </p>
+        <div class="col-lg-12 align-self-baseline">
+          <button class="btn btn-primary btn-xl js-scroll-trigger" id="login">Aller à l'écran de connexion</button>
+          <img *ngIf="loading"
+               src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
+        </div>
 
-      <div class="col-lg-8 align-self-baseline">
-        <button class="btn btn-primary btn-xl js-scroll-trigger" id="login">Connexion</button>
-        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
       </div>
 
     </div>

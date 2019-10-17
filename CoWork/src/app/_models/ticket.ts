@@ -6,7 +6,6 @@ export interface Ticket {
     equipment: string;
     status: string;
     id_open_space: string;
-    equipement: string;
   }
 
 export interface TicketRegister {
@@ -15,5 +14,4 @@ export interface TicketRegister {
   equipment: string;
   status: string;
   id_open_space: string;
-  equipement: string;
 }
