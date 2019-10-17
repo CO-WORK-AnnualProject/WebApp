@@ -4,6 +4,7 @@ import {NavigationEnd, Router} from '@angular/router';
 import {AuthentificationService} from '../_services/authentification.service';
 import {OpenSpaceService} from '../_services/open-space.service';
 import {OpenSpace} from '../_models/open_space';
+import {BookingService} from "../_services/booking.service";
 
 @Component({
   selector: 'app-customer-space',
@@ -18,7 +19,8 @@ export class CustomerSpaceComponent implements OnInit {
 
   constructor(private router: Router,
               private auth: AuthentificationService,
-              private openSpace: OpenSpaceService)
+              private openSpace: OpenSpaceService,
+              private booking: BookingService)
   {
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
